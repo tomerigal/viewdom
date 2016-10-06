@@ -1,0 +1,37 @@
+<template>
+    <textarea name="hi" id="" cols="30" rows="10"></textarea>
+    <button>remove me?</button>
+    <script>
+        (function(root, host){
+            var state = {}; // Immutable map?
+            var dataText = host.getAttribute('data-text');
+            var $textarea = $(root).find('textarea');
+            $textarea
+                .on('focus', function(){
+                    $textarea.val(dataText); 
+                })
+                .on('blur',function(){
+                    $textarea.val("");
+                });
+            $(root).find('button')
+                .on("click", function(){
+                    host.parentNode.removeChild(host); 
+                });
+            
+            $(host)
+                .hover(function(){
+                    $('body').css({background:"#EEE"});
+                },function(){ // out
+                    $('body').css({background:"#FFF"});
+                });
+        }(
+            document.currentScript.parentNode,
+            document.currentScript.parentNode.host
+        ));
+    </script>
+    <style>
+        :host{
+            color: red;
+        }
+    </style>
+</template>

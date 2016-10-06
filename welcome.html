@@ -1,0 +1,14 @@
+<template>
+    <script src="https://redom.js.org/redom.min.js"></script>
+    <script>
+        (function(root, host){
+            $(root).find('script')
+                .on('load', function(){
+                    redom.mount(root, redom.el('h1', 'Hello world!'));
+                });
+        }(
+            document.currentScript.parentNode,
+            document.currentScript.parentNode.host
+        ));
+    </script>
+</template>
